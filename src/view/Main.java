@@ -15,3 +15,7 @@ public class Main extends PApplet{
 	public void settings() {
 		size(600,600);
 	}
+	@Override
+	public void setup() {
+		controller = new Controller(this);
+	}
