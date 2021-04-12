@@ -74,4 +74,55 @@ public void addRandomFig() {
 			break;
 		}
 	}
-}}
+}
+public void pauseFig() {
+	for (int i = 0; i < figure.size(); i++) {
+		if (app.mouseX > (figure.get(i).getPosX() - (figure.get(i).getTam() / 2))
+				&& app.mouseX < (figure.get(i).getPosX() + (figure.get(i).getTam() / 2))
+				&& app.mouseY > (figure.get(i).getPosY() - (figure.get(i).getTam() / 2))
+				&& app.mouseY < (figure.get(i).getPosY() + (figure.get(i).getTam() / 2))) {
+			figure.get(i).setMov(!figure.get(i).isMov());
+		}
+	}
+}
+
+public void hit() {
+	boolean removed = false;
+	for (int i = 0; i < figure.size() && removed == false; i++) {
+
+		for (int j = 0; j < figure.size() && removed == false; j++) {
+			if (!(figure.get(i) instanceof Triangle)&& !(figure.get(j) instanceof Triangle)) {
+				if (i != j) {
+					if (PApplet.dist(figure.get(i).getPosX(), figure.get(i).getPosY(),
+									figure.get(j).getPosX(), figure.get(j).getPosY()) 
+										<= figure.get(i).getTam() / 2 + figure.get(j).getTam() / 2) {
+						
+										addTriangle(figure.get(i).getPosX(), //posx to draw triangle
+													 figure.get(i).getPosY(),//posY to draw triangle
+													 figure.get(i).getValue() + figure.get(j).getValue());
+										
+										figure.remove(j);//Remove First figure
+										figure.remove(i);// REmove second figure
+										
+										removed = true;
+					}
+				}
+
+			}
+
+		}
+	}
+}
+
+private void addTriangle(int posX, int posY, int value) {
+	int tam = (int) random(10,80);
+	int direction = 1;
+	
+	int r= (int) random (0,255);
+	int g= (int) random (0,255);
+	int b= (int) random (0,255);
+	
+	figure.add(new Triangle(tam, posX, posY, direction, r, g, b, value, app));
+}
+
+}
