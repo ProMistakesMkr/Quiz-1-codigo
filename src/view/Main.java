@@ -19,3 +19,16 @@ public class Main extends PApplet{
 	public void setup() {
 		controller = new Controller(this);
 	}
+	@Override
+	public void draw() {
+		background(10);
+		controller.drawRandomFig();
+		controller.hit();
+	}
+	
+	@Override
+	public void mousePressed() {
+			controller.addRandomFig();
+			controller.pauseFig();
+	}
+}
