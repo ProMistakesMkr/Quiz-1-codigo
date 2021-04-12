@@ -15,4 +15,24 @@ public class Controller {
 	
 	public void drawCircle() {
 		logic.drawCircle();
-	}}
+	}
+	public void drawSquare() {
+		logic.drawSquare();
+	}
+	
+	public void drawRandomFig() {
+		logic.drawRandomFig();
+	}
+
+	public void addRandomFig() {
+		logic.addRandomFig();
+	}
+	
+	public void pauseFig() {
+		logic.pauseFig();
+	}
+	
+	public void hit() {
+		logic.hit();
+	}
+}
